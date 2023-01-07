@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/daily-goals/static/css/main.4bd223f6.css",
+    "main.js": "/daily-goals/static/js/main.70573fda.js",
+    "static/js/787.07e588b4.chunk.js": "/daily-goals/static/js/787.07e588b4.chunk.js",
+    "index.html": "/daily-goals/index.html",
+    "main.4bd223f6.css.map": "/daily-goals/static/css/main.4bd223f6.css.map",
+    "main.70573fda.js.map": "/daily-goals/static/js/main.70573fda.js.map",
+    "787.07e588b4.chunk.js.map": "/daily-goals/static/js/787.07e588b4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4bd223f6.css",
+    "static/js/main.70573fda.js"
+  ]
+}
