@@ -1,0 +1,42 @@
+  .formulario{
+   border-radius: 12px;
+   padding: 2rem;
+   display: flex;
+  
+   background-color: rgb(255, 255, 255);
+   box-shadow: 0 0 4px rgba(0, 0, 0, 0.76);
+  }
+  
+ .form-control {
+    margin: 0.5rem 0;
+    display: block;
+    justify-content: flex-start;
+    align-content: center;
+    flex-direction: column;
+
+  }
+
+  .form-control label {
+    font-weight: bold;
+    color: rgb(0, 212, 212);
+    display: flex;    
+    margin-bottom: 0.5rem;
+  }
+
+  
+  .form-control input {
+    display: block;
+    width: 100%;
+    border: 1px solid #ccc;
+    font: inherit;
+    line-height: 1.5rem;
+    padding: 0.25rem;
+    margin-bottom: 1rem;
+    
+  }
+  
+  .form-control input:focus {
+    outline: none;
+    background: rgba(0, 212, 212, 0.24);
+    border-color: rgb(0, 212, 212);
+  } 
