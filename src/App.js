@@ -1,53 +1,48 @@
-import React,{useState} from 'react';
-import './App.css';
-import { NewGoal } from './components/Goals/NewGoal';
+import React from 'react';
 import { uid } from 'uid';
+
+import { NewGoal } from './components/Goals/NewGoal';
 import  CourseGoalList  from './components/Goals/CourseGoalList';
 
+import './App.css';
+
 function App() {
-  
-   let storage  = localStorage.getItem('lista');
+  const [courseGoals, setCourseGoals] = React.useState([]);
 
-  
-  const [courseGoals, setCourseGoals] = useState( (!storage) ?  [
-  ] : JSON.parse(storage) );
+  React.useEffect(() => {
+    const storage = localStorage.getItem("lista");
+    setCourseGoals(!storage ? [] : JSON.parse(storage));
+  }, []);
 
-  const addGoalHandler = ( enteredText ) => {
-    setCourseGoals(prevGoals => {
-      const updatedGoals = [...prevGoals];
-      updatedGoals.unshift({ text: enteredText, id:  uid() });
-      localStorage.setItem('lista',JSON.stringify(updatedGoals));
-      return updatedGoals;
-    });
-    
+  const addGoalHandler = (enteredText) => {
+    const updatedGoals = courseGoals.unshift({ text: enteredText, id: uid() });
+    localStorage.setItem("lista", JSON.stringify(updatedGoals));
+    setCourseGoals(updatedGoals);
   };
 
-  const deleteItemHandler = goalId => {
-    setCourseGoals(prevGoals => {
-      const updatedGoals = prevGoals.filter(goal => goal.id !== goalId);
-      localStorage.setItem('lista',JSON.stringify(updatedGoals));
-      return updatedGoals;
-    });
+  const deleteItemHandler = (goalId) => {
+    const updatedGoals = courseGoals.filter((goal) => goal.id !== goalId);
+    localStorage.setItem("lista", JSON.stringify(updatedGoals));
+    setCourseGoals(updatedGoals);
   };
 
-  let content = (
-    <p className='no-goals'>No goals found. Maybe add one?</p>
-  );
-
-  if (courseGoals.length > 0) {
-    content = (
-      <CourseGoalList items={courseGoals} onDeleteItem={deleteItemHandler} />
-    );
-  }
   return (
     <div className="App">
       <header className="App-header">
-       <NewGoal onSubmit={addGoalHandler} >
-       </NewGoal>
-       {content}
+        <NewGoal onSubmit={addGoalHandler} />
+        {courseGoals.length > 0 ? (
+          <p className="no-goals">No goals found. Maybe add one?</p>
+        ) : (
+          <CourseGoalList
+            items={courseGoals}
+            onDeleteItem={deleteItemHandler}
+          />
+        )}
+        {content}
       </header>
     </div>
   );
 }
+
 
 export default App;
